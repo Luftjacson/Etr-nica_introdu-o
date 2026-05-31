@@ -1161,6 +1161,126 @@
       }
     }
 
+
+    /* ===== DIV DE IDENTIFICAÇÃO DO ALUNO ===== */
+    .student-identity-panel {
+      margin:22px 0 24px;
+      padding:18px;
+      border-radius:18px;
+      background:
+        radial-gradient(circle at top right, rgba(242,184,75,.22), transparent 34%),
+        linear-gradient(180deg,#ffffff 0%,#f6fbff 100%);
+      border:1px solid #bfd0e3;
+      border-top:5px solid var(--accent);
+      box-shadow:0 12px 28px rgba(12,45,77,.14);
+      scroll-margin-top:24px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .student-identity-panel::before {
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:6px;
+      background:linear-gradient(180deg,var(--accent),var(--primary-2));
+    }
+
+    .student-identity-header {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      padding:0 0 14px 8px;
+      margin-bottom:14px;
+      border-bottom:1px solid #dce8f5;
+    }
+
+    .student-identity-kicker {
+      display:inline-block;
+      margin-bottom:6px;
+      color:#0c3a60;
+      background:#e3f0fc;
+      border:1px solid #c5ddf3;
+      border-radius:999px;
+      padding:4px 10px;
+      font-size:.76rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.45px;
+    }
+
+    .student-identity-header h3 {
+      margin:0;
+      color:#0b2f52;
+      font-size:1.18rem;
+      line-height:1.25;
+    }
+
+    .student-identity-pill {
+      background:#fff1c6;
+      border:1px solid #e7bd45;
+      color:#5f4300;
+      border-radius:999px;
+      padding:7px 11px;
+      font-size:.78rem;
+      font-weight:800;
+      box-shadow:0 3px 8px rgba(242,184,75,.16);
+      white-space:nowrap;
+    }
+
+    .student-identity-panel .student-form {
+      margin:0;
+      padding-left:8px;
+    }
+
+    .student-identity-panel .field {
+      background:#ffffff;
+      border:1px solid #d7e5f4;
+      border-radius:14px;
+      padding:12px;
+      box-shadow:0 4px 12px rgba(12,45,77,.06);
+    }
+
+    .student-identity-panel .field label {
+      color:#0b2f52;
+      font-size:.9rem;
+      font-weight:800;
+    }
+
+    .student-identity-panel .field input,
+    .student-identity-panel .field select,
+    .student-identity-panel .field .fixed-date {
+      background:#fbfdff;
+      border-color:#b9cde2;
+    }
+
+    .student-identity-panel .field input:focus,
+    .student-identity-panel .field select:focus {
+      border-color:var(--accent);
+      box-shadow:0 0 0 4px rgba(242,184,75,.22);
+    }
+
+    @media print {
+      .student-identity-panel {
+        display:none !important;
+      }
+    }
+
+    @media (max-width:760px) {
+      .student-identity-header {
+        display:block;
+      }
+
+      .student-identity-pill {
+        display:inline-block;
+        margin-top:10px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1244,6 +1364,7 @@
         <a href="#inicio">1. Introdução</a>
         <a href="#criterios">2. Critérios de análise</a>
         <a href="#investigationSection">3. Atividade prática</a>
+        <a href="#identificacaoAluno">4. Identificação do aluno</a>
         <a href="#img4">Atividade 1 — Polaridade do LED</a>
         <a href="#img5">Atividade 2 — Ligação do resistor ao LED</a>
         <a href="#img3">Atividade 3 — LED apagado</a>
@@ -1307,31 +1428,41 @@
       <div class="callout"><strong>Pontuação total:</strong> 100 pontos.</div>
       <p style="display:none"></p>
 
-      <div class="student-form">
-        <div class="field">
-          <label for="studentName">🧾 Nome do aluno</label>
-          <input type="text" id="studentName" placeholder="Digite seu nome completo">
+      <div class="student-identity-panel" id="identificacaoAluno">
+        <div class="student-identity-header">
+          <div>
+            <span class="student-identity-kicker">Identificação do estudante</span>
+            <h3>🧾 Preencha seus dados antes de começar</h3>
+          </div>
+          <span class="student-identity-pill">Obrigatório para o relatório</span>
         </div>
-        <div class="field">
-          <label for="studentNumber">🔢 Número de chamada</label>
-          <input type="text" id="studentNumber" placeholder="Ex.: 12">
-        </div>
-        <div class="field">
-          <label for="studentClass">🏫 Turma</label>
-          <select id="studentClass">
-            <option value="">Selecione a turma</option>
-            <option>8º ano A</option>
-            <option>8º ano B</option>
-            <option>8º ano C</option>
-            <option>6º ano</option>
-            <option>7º ano</option>
-            <option>9º ano</option>
-            <option>Ensino Médio</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>📅 Data</label>
-          <div id="activityDate" class="fixed-date" aria-live="polite"></div>
+
+        <div class="student-form">
+          <div class="field">
+            <label for="studentName">Nome do aluno</label>
+            <input type="text" id="studentName" placeholder="Digite seu nome completo">
+          </div>
+          <div class="field">
+            <label for="studentNumber">Número de chamada</label>
+            <input type="text" id="studentNumber" placeholder="Ex.: 12">
+          </div>
+          <div class="field">
+            <label for="studentClass">Turma</label>
+            <select id="studentClass">
+              <option value="">Selecione a turma</option>
+              <option>8º ano A</option>
+              <option>8º ano B</option>
+              <option>8º ano C</option>
+              <option>6º ano</option>
+              <option>7º ano</option>
+              <option>9º ano</option>
+              <option>Ensino Médio</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Data</label>
+            <div id="activityDate" class="fixed-date" aria-live="polite"></div>
+          </div>
         </div>
       </div>
 
