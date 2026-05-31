@@ -964,7 +964,204 @@
       min-height:24px;
     }
 
-  </style>
+  
+    /* ===== MENU DE NAVEGAÇÃO MAIS BONITO ===== */
+    .nav-hover-zone {
+      width:22px;
+    }
+
+    .side-nav {
+      width:255px !important;
+      padding:0 !important;
+      overflow:hidden;
+      border:none !important;
+      border-radius:0 20px 20px 0 !important;
+      background:linear-gradient(180deg,#ffffff 0%,#f6fbff 100%) !important;
+      box-shadow:0 18px 42px rgba(7,29,52,.22) !important;
+      transform:translateX(calc(-100% + 18px));
+    }
+
+    .side-nav::before {
+      content:"";
+      position:absolute;
+      inset:0 auto 0 0;
+      width:6px;
+      background:linear-gradient(180deg,var(--accent) 0%,var(--primary-2) 55%,var(--primary) 100%);
+      z-index:2;
+    }
+
+    .side-nav::after {
+      content:"☰";
+      position:absolute;
+      right:2px;
+      top:50%;
+      transform:translateY(-50%);
+      width:28px;
+      height:54px;
+      border-radius:999px 0 0 999px;
+      background:linear-gradient(180deg,var(--primary-2),var(--primary));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.05rem;
+      font-weight:800;
+      box-shadow:0 6px 16px rgba(7,29,52,.20);
+      pointer-events:none;
+    }
+
+    .nav-hover-zone:hover + .side-nav,
+    .side-nav:hover,
+    .side-nav:focus-within {
+      transform:translateX(0);
+    }
+
+    .side-nav:hover::after,
+    .side-nav:focus-within::after {
+      opacity:0;
+    }
+
+    .side-nav h2 {
+      margin:0 !important;
+      padding:18px 18px 8px 24px;
+      color:#0b2f52 !important;
+      font-size:1.05rem !important;
+      letter-spacing:.1px;
+      background:
+        radial-gradient(circle at top right,rgba(242,184,75,.20),transparent 34%),
+        linear-gradient(180deg,#ffffff 0%,#f4f9ff 100%);
+    }
+
+    .side-nav p {
+      margin:0 !important;
+      padding:0 18px 14px 24px;
+      color:#5b6b7c !important;
+      font-size:.82rem !important;
+      line-height:1.35 !important;
+      border-bottom:1px solid #dce8f5;
+      background:#f4f9ff;
+    }
+
+    .nav-group {
+      display:grid !important;
+      gap:8px !important;
+      padding:14px 14px 16px 22px;
+      max-height:calc(100vh - 220px);
+      overflow:auto;
+    }
+
+    .nav-group::-webkit-scrollbar {
+      width:7px;
+    }
+
+    .nav-group::-webkit-scrollbar-thumb {
+      background:#b8cce0;
+      border-radius:999px;
+    }
+
+    .side-nav a {
+      position:relative;
+      display:flex !important;
+      align-items:center;
+      gap:8px;
+      min-height:42px;
+      padding:9px 12px 9px 14px !important;
+      border-radius:14px !important;
+      background:#ffffff !important;
+      border:1px solid #d7e5f4 !important;
+      color:#173a5d !important;
+      font-size:.85rem !important;
+      line-height:1.2;
+      font-weight:800 !important;
+      box-shadow:0 3px 10px rgba(12,45,77,.06);
+      transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .side-nav a::before {
+      content:"";
+      flex:0 0 auto;
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 0 3px rgba(242,184,75,.18);
+    }
+
+    .side-nav a:hover {
+      transform:translateX(4px) !important;
+      background:linear-gradient(180deg,#eef7ff,#ffffff) !important;
+      border-color:#9ec4e8 !important;
+      box-shadow:0 7px 16px rgba(12,45,77,.12);
+    }
+
+    .side-nav a[href="#inicio"]::before,
+    .side-nav a[href="#criterios"]::before,
+    .side-nav a[href="#fechamento"]::before {
+      background:var(--primary-2);
+      box-shadow:0 0 0 3px rgba(23,96,145,.14);
+    }
+
+    .side-nav a[href="#investigationSection"] {
+      background:linear-gradient(180deg,#fff7df,#ffffff) !important;
+      border-color:#ead18a !important;
+      color:#5f4300 !important;
+    }
+
+    .side-nav a[href="#investigationSection"]::before {
+      background:var(--accent);
+    }
+
+    @media (max-width:820px) {
+      .side-nav {
+        width:auto !important;
+        padding:14px !important;
+        border:1px solid var(--border) !important;
+        border-radius:16px !important;
+        transform:none !important;
+        overflow:visible;
+      }
+
+      .side-nav::before,
+      .side-nav::after {
+        display:none;
+      }
+
+      .side-nav h2 {
+        padding:0 0 6px 0 !important;
+        background:transparent;
+      }
+
+      .side-nav p {
+        padding:0 0 12px 0 !important;
+        background:transparent;
+      }
+
+      .nav-group {
+        padding:0 !important;
+        max-height:none;
+        overflow:visible;
+      }
+    }
+
+
+    /* Ajuste do topo do menu sem texto de orientação */
+    .side-nav h2 {
+      padding:18px 18px 14px 24px !important;
+      border-bottom:1px solid #dce8f5;
+    }
+
+    .nav-group {
+      padding-top:14px !important;
+    }
+
+    @media (max-width:820px) {
+      .side-nav h2 {
+        padding:0 0 12px 0 !important;
+        border-bottom:none;
+      }
+    }
+
+</style>
 </head>
 <body>
   <div class="govbar">
@@ -1043,7 +1240,6 @@
     <div aria-hidden="true" class="nav-hover-zone no-print"></div>
     <aside class="side-nav no-print" aria-label="Painel de navegação da atividade">
       <h2>📚 Navegação</h2>
-      <p>Aproxime o mouse da lateral esquerda para abrir a navegação.</p>
       <nav class="nav-group">
         <a href="#inicio">1. Introdução</a>
         <a href="#criterios">2. Critérios de análise</a>
